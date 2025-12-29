@@ -1,0 +1,7 @@
+{
+  "name": "Supernova: Master Urdu Narrator",
+  "description": "A high-performance Urdu audiobook generator. Transform documents into professional narrations with a refined interface.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
