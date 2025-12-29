@@ -33,5 +33,6 @@ export const AVAILABLE_VOICES: VoiceOption[] = [
   { name: 'Kore', label: 'Classic Narrator', description: 'Formal and authoritative Urdu' },
   { name: 'Zephyr', label: 'Poetic Soul', description: 'Smooth and expressive delivery' },
   { name: 'Puck', label: 'Clear & Bright', description: 'Modern, crisp articulation' },
-  { name: 'Charon', label: 'Deep Sage', description: 'Rich, resonant tones for literature' }
+  { name: 'Charon', label: 'Deep Sage', description: 'Rich, resonant tones for literature' },
+  { name: 'Fenrir', label: 'The Orator', description: 'Powerful, steady, and dramatic' }
 ];

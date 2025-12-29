@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Type, Modality } from "@google/genai";
-import { VoiceName } from "../types";
+import { VoiceName } from "../types.ts";
 
 export const decodeBase64 = (base64: string) => {
   const binaryString = atob(base64);
@@ -31,9 +31,17 @@ export async function decodeAudioData(
   return buffer;
 }
 
+const getAIClient = () => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey || apiKey === 'undefined' || apiKey === '') {
+    throw new Error("API Key Missing: Please ensure the API_KEY environment variable is set in your host settings (e.g., Vercel).");
+  }
+  return new GoogleGenAI({ apiKey });
+};
+
 export const geminiService = {
   async processDocument(fileData: string, mimeType: string): Promise<{title: string, paragraphs: string[]}> {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = getAIClient();
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: [
@@ -63,7 +71,7 @@ export const geminiService = {
   },
 
   async generateTTS(text: string, voiceName: VoiceName = 'Kore'): Promise<string> {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = getAIClient();
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash-preview-tts",
       contents: [{ parts: [{ text: `Narrate this Urdu text with a masterful, literary tone: ${text}` }] }],
@@ -78,7 +86,7 @@ export const geminiService = {
     });
 
     const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-    if (!base64Audio) throw new Error("Synthesis failed.");
+    if (!base64Audio) throw new Error("Synthesis failed: The narrator returned an empty response.");
     
     const audioBytes = decodeBase64(base64Audio);
     const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });

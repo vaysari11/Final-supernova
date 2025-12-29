@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { AVAILABLE_VOICES, VoiceName, ParagraphBlock, Book } from './types';
-import { geminiService } from './services/gemini';
-import { mergeAudioUrls } from './services/audio';
-import { AudioPlayer } from './components/AudioPlayer';
-import { BookLibrary } from './components/BookLibrary';
+import { AVAILABLE_VOICES, VoiceName, ParagraphBlock, Book } from './types.ts';
+import { geminiService } from './services/gemini.ts';
+import { mergeAudioUrls } from './services/audio.ts';
+import { AudioPlayer } from './components/AudioPlayer.tsx';
+import { BookLibrary } from './components/BookLibrary.tsx';
 
 type ViewMode = 'home' | 'upload' | 'manual' | 'studio' | 'naming';
 
