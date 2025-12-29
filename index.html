@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supernova | Master Urdu Narration</title>
     
-    <!-- 1. Safety Polyfill: Must be first -->
+    <!-- 1. Safety Polyfill -->
     <script>
       window.process = { env: { NODE_ENV: 'production' } };
     </script>
 
-    <!-- 2. Module Shims: Required for Import Maps to work correctly -->
+    <!-- 2. Module Shims -->
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.10.1/dist/es-module-shims.js"></script>
 
-    <!-- 3. Unified Import Map: Ensures ONLY ONE version of React is loaded -->
+    <!-- 3. Unified Import Map (FIXED VERSION CONFLICT) -->
     <script type="importmap">
 {
   "imports": {
