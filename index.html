@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supernova | Master Urdu Narration</title>
     
-    <!-- 1. Safety Polyfill -->
+    <!-- 1. Environment Safety -->
     <script>
       window.process = { env: { NODE_ENV: 'production' } };
     </script>
 
-    <!-- 2. Module Shims -->
+    <!-- 2. ES Module Shims for Import Maps -->
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.10.1/dist/es-module-shims.js"></script>
 
-    <!-- 3. Unified Import Map (FIXED: Removed version conflicts) -->
+    <!-- 3. Unified Import Map (FIXED: Consistently using 19.0.0) -->
     <script type="importmap">
 {
   "imports": {
@@ -60,7 +60,7 @@
             transform: translate(-50%, -50%);
             font-family: 'Playfair Display', serif;
             font-size: 0.75rem;
-            color: #444;
+            color: #333;
             letter-spacing: 0.3em;
             animation: pulse 2s infinite ease-in-out;
         }
